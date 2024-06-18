@@ -31,7 +31,12 @@ public class Supermercado {
 	public TreeSet<Alimento> alimentosAchicadoresOrdenadosPorNombreDescendente(Comparator<Alimento> ordenDescendente){
 		TreeSet<Alimento> alimentosAchicadoresOrdenadosPorNombre = new TreeSet<>(ordenDescendente);
 		
-		alimentosAchicadoresOrdenadosPorNombre.addAll(alimentos);
+		for (Alimento alimento : alimentos) {
+			if(alimento instanceof Achicador) {
+				alimentosAchicadoresOrdenadosPorNombre.addAll(alimentos);
+			}
+		}
+		
 		return alimentosAchicadoresOrdenadosPorNombre;
 	}
 	
@@ -53,6 +58,21 @@ public class Supermercado {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
+	public TreeSet<Alimento> obtenerlosAlimentosOrdenados() {
+		TreeSet<Alimento> alimentosOrdenados = new TreeSet<>();
+		
+		for (Alimento alimento : alimentos) {
+			if(alimento instanceof Achicador) {
+				alimentosOrdenados.add(alimento);
+			}
+		}
+		return alimentosOrdenados;
+	}
+
+
+
 	
 	
 
